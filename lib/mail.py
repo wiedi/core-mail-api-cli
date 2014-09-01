@@ -35,7 +35,6 @@ def waitformail(token, server, port, user=None, password=None, ssl=False, debug=
 	mail.login(user, password)
 	mail.select("inbox")
 	result, data = mail.uid('search', None, '(HEADER Subject "' + token + '")')
-
 	waited_seconds = 0
 	wait_interval  = 5
 	while len(data) < 1 or data[0] == '':
@@ -45,7 +44,9 @@ def waitformail(token, server, port, user=None, password=None, ssl=False, debug=
 		waited_seconds += wait_interval
 		if waited_seconds > 120:
 			raise Exception("Timeout waiting for mail to arrive")
-	
+
+		result, data = mail.uid('search', None, '(HEADER Subject "' + token + '")')
+
 	uid = data[0]
 	result, data = mail.uid('fetch', uid, '(RFC822)')
 	raw_email = data[0][1]
