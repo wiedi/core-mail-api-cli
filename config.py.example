@@ -1,0 +1,31 @@
+CONFIG = {
+	'debug': 0,
+	'test_domain':    'example.com',
+	'invalid_domain': 'example.invalid',
+
+	'api_server': 'https://api.mail.example.com/',
+	'api_username': 'admin',
+	'api_password': 'secret',
+	'api_verify_ssl': True,
+
+	'submission_server': 'submission.mail.example.com',
+	'mailbox_server':    'box.mail.example.com',
+	'external': [
+		{
+			'submission_server': 'mx.freenet.de',
+			'submission_port':   '587',
+			'mailbox_server':    'mx.freenet.de',
+			'mailbox_port':      '993',
+			'username':          'example@freenet.de',
+			'password':          'secret',
+		},
+		{
+			'submission_server': 'smtp.gmail.com',
+			'submission_port':   '587',
+			'mailbox_server':    'imap.gmail.com',
+			'mailbox_port':      '993',
+			'username':          'example@gmail.com',
+			'password':          'secret',
+		},
+	]
+}
