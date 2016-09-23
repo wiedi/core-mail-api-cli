@@ -45,6 +45,7 @@ def waitformail(token, server, port, user=None, password=None, ssl=False, debug=
 		if waited_seconds > 120:
 			raise Exception("Timeout waiting for mail to arrive")
 
+		mail.select("inbox")
 		result, data = mail.uid('search', None, '(HEADER Subject "' + token + '")')
 
 	uid = data[0]
